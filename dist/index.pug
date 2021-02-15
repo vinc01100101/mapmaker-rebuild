@@ -1,0 +1,24 @@
+doctype html
+head
+	title mapMaker Rebuild!
+	meta(charset='UTF-8')
+	link(rel="stylesheet", href="./reset.css", type='text/css')
+	link(rel="stylesheet", href="./style.css", type='text/css')
+	meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+	meta(name='description', content='A simple chat application.')
+	link(rel='shortcut icon', href='./favicon.ico', type='image/x-icon')
+
+#root
+#variables
+	#page #{page}
+	#errorDom #{errorDom}
+	#user #{user}
+//- my supposed to be dynamic import code **/
+//- script(type='text/javascript').
+//- 	var page = document.querySelector('#page').textContent;
+//- 	var s = document.createElement('script')
+//- 			s.src = `./js/${page}.js`
+//- 			document.body.appendChild(s)
+script(src='./socket.io/socket.io.js')
+script(type='text/javascript' src='./js/dynamicImport.js')
+

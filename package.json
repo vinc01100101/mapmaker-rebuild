@@ -1,0 +1,43 @@
+{
+	"name": "mapmaker-rebuild",
+	"version": "1.0.0",
+	"description": "title says it all",
+	"main": "server.js",
+	"scripts": {
+		"start": "babel-watch ./server.js",
+		"build": "webpack --mode production"
+	},
+	"keywords": [],
+	"author": "vince.r",
+	"license": "ISC",
+	"devDependencies": {
+		"@babel/core": "^7.12.13",
+		"@babel/preset-env": "^7.12.13",
+		"@babel/preset-react": "^7.12.13",
+		"babel-loader": "^8.2.2",
+		"babel-watch": "^7.4.0",
+		"webpack": "^5.21.0",
+		"webpack-cli": "^4.5.0",
+		"webpack-dev-middleware": "^4.1.0"
+	},
+	"dependencies": {
+		"bcrypt": "^5.0.0",
+		"connect-mongo": "^3.2.0",
+		"cookie-parser": "^1.4.5",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"express-flash": "0.0.2",
+		"express-session": "^1.17.1",
+		"mongoose": "^5.11.15",
+		"mongoose-unique-validator": "^2.0.3",
+		"passport": "^0.4.1",
+		"passport-local": "^1.0.0",
+		"passport.socketio": "^3.7.0",
+		"pug": "^3.0.0",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"react-redux": "^7.2.2",
+		"redux": "^4.0.5",
+		"socket.io": "^3.1.1"
+	}
+}

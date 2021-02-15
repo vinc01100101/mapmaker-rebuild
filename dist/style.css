@@ -1,0 +1,95 @@
+@font-face {
+  font-family: 'Source Sans Pro', sans-serif;
+  src: url('./fonts/SourceSansPro-Regular.eot'); /* IE9 Compat Modes */
+  src: url('./fonts/SourceSansPro-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('./fonts/SourceSansPro-Regular.woff') format('woff'), /* Modern Browsers */
+       url('./fonts/SourceSansPro-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('./fonts/SourceSansPro-Regular.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+html{
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+body{
+	height: 99vh;
+}
+a:visited{
+	color: black;
+}
+.flex-row{
+	display: flex;
+	flex-direction: row;
+}
+.flex-space-between{
+	justify-content: space-between;
+
+}
+.page-title{
+	font-size: 40px;
+	margin: 0;
+	display:  inline;
+}
+header{
+	padding: 10px;
+	background: #a2b8ff;
+	align-items: center;
+}
+header #login-form{
+
+
+}
+#variables{
+	display: none;
+}
+#root{
+	height: 100%;
+}
+#error-message{
+	margin: 0;
+	padding: 0;
+}
+#profile-container{
+	height: inherit;
+
+}
+#user-sideboard{
+	position: relative;
+	width: 200px;
+	border: 2px solid black;
+	padding: 5px;
+}
+#main-screen{
+	flex: 1;
+	border: 2px solid black;
+}
+.user-options{
+	background: white;
+	color: black;
+	transition: all 0.3s ease-in-out;
+	height: 2em;
+
+	/*for removing text highlighting*/
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+.user-options:hover{
+	background: green;
+	transform: translateX(5px);
+}
+.user-options div{
+	position: absolute;
+	transform: translateY(50%);
+	transition: all 0.3s ease-in-out;
+}
