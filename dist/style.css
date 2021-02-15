@@ -68,6 +68,10 @@ header #login-form{
 #main-screen{
 	flex: 1;
 	border: 2px solid black;
+	display: inherit;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 .user-options{
 	background: white;
@@ -85,11 +89,14 @@ header #login-form{
                                   supported by Chrome, Opera and Firefox */
 }
 .user-options:hover{
-	background: green;
+	background: #a1b9fc;
 	transform: translateX(5px);
 }
 .user-options div{
 	position: absolute;
 	transform: translateY(50%);
 	transition: all 0.3s ease-in-out;
+}
+.option-component{
+	/* width: 100%; */
 }

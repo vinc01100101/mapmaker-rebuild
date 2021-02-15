@@ -2,23 +2,21 @@ const React = require("react");
 const ReactDOM = require("react-dom");
 const reduxConfig = require("./redux/redux-config");
 
-//name of each option buttons
-const userOptions = [
-	"posts []",
-	"myGallery []",
-	"myTilesets []",
-	"mapMaker ()",
-	"editProfile {}",
-	"settings {}",
-];
+const EditProfile = require("./components/EditProfile");
+const MapMaker = require("./components/MapMaker");
+const MyGallery = require("./components/MyGallery");
+const MyTilesets = require("./components/MyTilesets");
+const Posts = require("./components/Posts");
+const Settings = require("./components/Settings");
+
 //reference for each width of active option
-const widthRef = {
-	posts: 44,
-	myGallery: 79,
-	myTilesets: 85,
-	mapMaker: 82,
-	editProfile: 83,
-	settings: 63,
+const userOptions = {
+	posts: [44, "[]", "#a1b9fc", <Posts />],
+	myGallery: [79, "[]", "#a3edff", <MyGallery />],
+	myTilesets: [85, "[]", "#a3ffba", <MyTilesets />],
+	mapMaker: [82, "()", "#e8ffa3", <MapMaker />],
+	editProfile: [83, "{}", "#ffa8a3", <EditProfile />],
+	settings: [63, "{}", "#ffa3ff", <Settings />],
 };
 class Profile extends React.Component {
 	constructor(props) {
@@ -41,7 +39,6 @@ class Profile extends React.Component {
 		this._reduxActionCallback = (action, value) => {
 			value ? this.props[action](value) : this.props[action];
 		};
-
 		this._generateUserOptionButtons = (name, sign) => {
 			//split between lowercase and uppercase
 			let activeName = name.split(/(?=[A-Z][a-z]+)/);
@@ -53,6 +50,7 @@ class Profile extends React.Component {
 
 			return (
 				<div
+					id={name}
 					key={name}
 					className="user-options"
 					onClick={() => {
@@ -63,7 +61,7 @@ class Profile extends React.Component {
 						style={{
 							transform:
 								this.props.currMainScreen == name &&
-								`translate(${200 - widthRef[name]}px,50%)`,
+								`translate(${200 - userOptions[name][0]}px,50%)`,
 							opacity: this.props.currMainScreen == name && 0,
 						}}
 					>
@@ -74,7 +72,7 @@ class Profile extends React.Component {
 							fontWeight: "bold",
 							transform:
 								this.props.currMainScreen == name &&
-								`translate(${200 - widthRef[name]}px,50%)`,
+								`translate(${200 - userOptions[name][0]}px,50%)`,
 							opacity: this.props.currMainScreen == name ? 1 : 0,
 						}}
 					>
@@ -106,9 +104,8 @@ class Profile extends React.Component {
 					</div>
 					{
 						//generate buttons
-						userOptions.map((x) => {
-							x = x.split(" ");
-							return this._generateUserOptionButtons(...x);
+						Object.keys(userOptions).map((x) => {
+							return this._generateUserOptionButtons(x, userOptions[x][1]);
 						})
 					}
 					<div
@@ -120,7 +117,8 @@ class Profile extends React.Component {
 						<div>{"logout ()"}</div>
 					</div>
 				</div>
-				<div id="main-screen"></div>
+				{/*MAIN SCREEN*/}
+				<div id="main-screen">{userOptions[this.props.currMainScreen][3]}</div>
 				{/*CHAT FUNCTIONALITY*/}
 				{/*<ul>
 					{this.props.msgData.length > 0 &&

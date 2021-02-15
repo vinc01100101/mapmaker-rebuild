@@ -35,7 +35,7 @@ module.exports = (Component) => {
 	};
 	//for ui states
 	const defaultUiState = {
-		currMainScreen: "",
+		currMainScreen: "posts",
 	};
 	const uiReducer = (state = defaultUiState, action) => {
 		switch (action.type) {
