@@ -2,6 +2,7 @@ const React = require("react");
 const ReactDOM = require("react-dom");
 const reduxConfig = require("./redux/redux-config");
 
+//components
 const EditProfile = require("./components/EditProfile");
 const MapMaker = require("./components/MapMaker");
 const MyGallery = require("./components/MyGallery");
@@ -9,14 +10,22 @@ const MyTilesets = require("./components/MyTilesets");
 const Posts = require("./components/Posts");
 const Settings = require("./components/Settings");
 
+//helpers
+const Context = require("./helpers/context-profile");
+
 //reference for each width of active option
 const userOptions = {
-	posts: [44, "[]", "#a1b9fc", <Posts />],
-	myGallery: [79, "[]", "#a3edff", <MyGallery />],
-	myTilesets: [85, "[]", "#a3ffba", <MyTilesets />],
-	mapMaker: [82, "()", "#e8ffa3", <MapMaker />],
-	editProfile: [83, "{}", "#ffa8a3", <EditProfile />],
-	settings: [63, "{}", "#ffa3ff", <Settings />],
+	posts: [44, "[ ]", "#a1b9fc", <Posts />],
+	myGallery: [79, "[ ]", "#a3edff", <MyGallery />],
+	myTilesets: [85, "[ ]", "#a3ffba", <MyTilesets />],
+	mapMaker: [
+		82,
+		"( )",
+		"#e8ffa3",
+		<MapMaker _reduxActionCallback={this._reduxActionCallback} />,
+	],
+	editProfile: [83, "{ }", "#ffa8a3", <EditProfile />],
+	settings: [63, "{ }", "#ffa3ff", <Settings />],
 };
 class Profile extends React.Component {
 	constructor(props) {
@@ -88,7 +97,7 @@ class Profile extends React.Component {
 	render() {
 		return (
 			<div className="flex-row" id="profile-container">
-				<div id="user-sideboard">
+				<div id="user-sideboard" className="no-user-select">
 					<div className="flex-row">
 						<img
 							src="/assets/profile_pictures/default.jpg"
@@ -114,11 +123,21 @@ class Profile extends React.Component {
 							window.location.href = "/logout";
 						}}
 					>
-						<div>{"logout ()"}</div>
+						<div>{"logout ( )"}</div>
 					</div>
 				</div>
 				{/*MAIN SCREEN*/}
-				<div id="main-screen">{userOptions[this.props.currMainScreen][3]}</div>
+				<Context.Provider
+					value={{
+						reduxActionCallback: this._reduxActionCallback,
+						loadOrNew: this.props.loadOrNew,
+					}}
+				>
+					<div id="main-screen">
+						{userOptions[this.props.currMainScreen][3]}
+					</div>
+				</Context.Provider>
+
 				{/*CHAT FUNCTIONALITY*/}
 				{/*<ul>
 					{this.props.msgData.length > 0 &&

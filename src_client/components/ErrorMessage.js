@@ -12,6 +12,7 @@ module.exports = class ErrorMessage extends React.Component {
 		if (errorDom != "") {
 			const parsed = JSON.parse(errorDom);
 			this.errorMessage = parsed.message;
+			//re-set the previous value of username and such if login is failed
 			this.props.setStateCallback("username", parsed.prevValues.username);
 		}
 	}

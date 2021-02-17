@@ -7,12 +7,19 @@ module.exports = (Component) => {
 	//constant action types
 	const ADD_MESSAGE = "ADD_MESSAGE";
 	const CHANGE_MAIN_SCREEN = "CHANGE_MAIN_SCREEN";
+	const MAPMAKER_LOAD_AND_NEW = "MAPMAKER_LOAD_AND_NEW";
 	//actions
 	const actAddMessage = (msgData) => {
 		return { type: ADD_MESSAGE, msgData };
 	};
 	const actChangeMainScreen = (mainScreen) => {
 		return { type: CHANGE_MAIN_SCREEN, mainScreen };
+	};
+	const actMapMakerLoadAndNew = (loadOrNew) => {
+		return {
+			type: MAPMAKER_LOAD_AND_NEW,
+			loadOrNew,
+		};
 	};
 
 	//reducers_____
@@ -36,13 +43,22 @@ module.exports = (Component) => {
 	//for ui states
 	const defaultUiState = {
 		currMainScreen: "posts",
+		loadOrNew: "",
 	};
 	const uiReducer = (state = defaultUiState, action) => {
+		let clone;
 		switch (action.type) {
 			case CHANGE_MAIN_SCREEN:
 				//NEVER MUTATE STATES
-				const clone = Object.assign({}, state, {
+				clone = Object.assign({}, state, {
 					currMainScreen: action.mainScreen,
+				});
+				return clone;
+				break;
+			case MAPMAKER_LOAD_AND_NEW:
+				//NEVER MUTATE STATES
+				clone = Object.assign({}, state, {
+					loadOrNew: action.loadOrNew,
 				});
 				return clone;
 				break;
@@ -50,6 +66,7 @@ module.exports = (Component) => {
 				return state;
 		}
 	};
+	//and..for our MAP MAKER!!!!
 
 	//root reducer for multiple reducers
 	const rootReducer = Redux.combineReducers({
@@ -64,14 +81,18 @@ module.exports = (Component) => {
 	const mapStateToProps = (state) => ({
 		msgData: state.chatReducer.msgData,
 		currMainScreen: state.uiReducer.currMainScreen,
+		loadOrNew: state.uiReducer.loadOrNew,
 	});
 
 	const mapDispatchToProps = (dispatch) => ({
-		addMessage: (msgData) => {
-			dispatch(actAddMessage(msgData));
+		addMessage: (value) => {
+			dispatch(actAddMessage(value));
 		},
-		changeMainScreen: (mainScreen) => {
-			dispatch(actChangeMainScreen(mainScreen));
+		changeMainScreen: (value) => {
+			dispatch(actChangeMainScreen(value));
+		},
+		mapMakerLoadAndNew: (value) => {
+			dispatch(actMapMakerLoadAndNew(value));
 		},
 	});
 
