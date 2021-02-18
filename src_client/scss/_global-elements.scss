@@ -1,0 +1,61 @@
+@font-face {
+	font-family: "Source Sans Pro", sans-serif;
+	src: url("./fonts/SourceSansPro-Regular.eot"); /* IE9 Compat Modes */
+	src: /* IE6-IE8 */ url("./fonts/SourceSansPro-Regular.eot?#iefix")
+			format("embedded-opentype"),
+		/* Modern Browsers */ url("./fonts/SourceSansPro-Regular.woff")
+			format("woff"),
+		/* Safari, Android, iOS */ url("./fonts/SourceSansPro-Regular.ttf")
+			format("truetype"),
+		url("./fonts/SourceSansPro-Regular.svg#svgFontName") format("svg"); /* Legacy iOS */
+}
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+html {
+	font-family: "Source Sans Pro", sans-serif;
+}
+
+body {
+	height: 99vh;
+}
+a:visited {
+	color: black;
+}
+header {
+	padding: 10px;
+	background: #a2b8ff;
+	align-items: center;
+}
+input[type="range"] {
+	-webkit-appearance: none;
+	width: 100px;
+	height: 25px;
+	background: rgb(40, 40, 40);
+	outline: none;
+	opacity: 0.7;
+	-webkit-transition: 0.2s;
+	transition: opacity 0.2s;
+
+	&:hover {
+		opacity: 1;
+	}
+
+	&::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 25px;
+		height: 25px;
+		background: #3563bc;
+		cursor: pointer;
+	}
+
+	&::-moz-range-thumb {
+		width: 25px;
+		height: 25px;
+		background: #3563bc;
+		cursor: pointer;
+	}
+}

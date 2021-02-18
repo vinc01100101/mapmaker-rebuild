@@ -1,0 +1,214 @@
+@font-face {
+  font-family: "Source Sans Pro", sans-serif;
+  src: url("./fonts/SourceSansPro-Regular.eot");
+  /* IE9 Compat Modes */
+  src: url("./fonts/SourceSansPro-Regular.eot?#iefix") format("embedded-opentype"), url("./fonts/SourceSansPro-Regular.woff") format("woff"), url("./fonts/SourceSansPro-Regular.ttf") format("truetype"), url("./fonts/SourceSansPro-Regular.svg#svgFontName") format("svg");
+  /* Legacy iOS */ }
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+html {
+  font-family: "Source Sans Pro", sans-serif; }
+
+body {
+  height: 99vh; }
+
+a:visited {
+  color: black; }
+
+header {
+  padding: 10px;
+  background: #a2b8ff;
+  align-items: center; }
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100px;
+  height: 25px;
+  background: #282828;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s; }
+  input[type="range"]:hover {
+    opacity: 1; }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #3563bc;
+    cursor: pointer; }
+  input[type="range"]::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #3563bc;
+    cursor: pointer; }
+
+#profile-container {
+  height: 100%; }
+  #profile-container #user-sideboard {
+    /*for removing text highlighting*/
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+    position: relative;
+    min-width: 220px;
+    min-height: 431px;
+    border: 2px solid black;
+    padding: 5px; }
+    #profile-container #user-sideboard .user-options {
+      background: white;
+      color: black;
+      transition: all 0.3s ease-in-out;
+      height: 2em; }
+      #profile-container #user-sideboard .user-options div {
+        position: absolute;
+        transform: translateY(50%);
+        transition: all 0.3s ease-in-out; }
+      #profile-container #user-sideboard .user-options:hover {
+        background: #a1b9fc;
+        transform: translateX(5px); }
+  #profile-container #main-screen {
+    flex: 1;
+    position: relative;
+    border: 2px solid black;
+    display: inherit;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 1135px;
+    min-height: 431px; }
+    #profile-container #main-screen .option-component {
+      width: 100%;
+      height: 100%; }
+    #profile-container #main-screen #option-component_MAPMAKER #mapmaker-initial-components {
+      background: black;
+      width: 100%;
+      height: 100%; }
+      #profile-container #main-screen #option-component_MAPMAKER #mapmaker-initial-components .ic-child {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        transition: clip-path 0.7s ease-in-out, opacity 1s;
+        background-size: 100% 100%; }
+        #profile-container #main-screen #option-component_MAPMAKER #mapmaker-initial-components .ic-child#ic-child_LOAD {
+          background: url("../assets/backgrounds/bg1.jpg") no-repeat;
+          clip-path: polygon(0% 0%, 52% 0%, 52% 45%, 42% 55%, 42% 100%, 0% 100%); }
+          #profile-container #main-screen #option-component_MAPMAKER #mapmaker-initial-components .ic-child#ic-child_LOAD:hover {
+            opacity: 1; }
+        #profile-container #main-screen #option-component_MAPMAKER #mapmaker-initial-components .ic-child#ic-child_NEW {
+          background: url("../assets/backgrounds/bg2.jpg") no-repeat;
+          clip-path: polygon(100% 0%, 58% 0%, 58% 45%, 48% 55%, 48% 100%, 100% 100%); }
+          #profile-container #main-screen #option-component_MAPMAKER #mapmaker-initial-components .ic-child#ic-child_NEW:hover {
+            opacity: 1; }
+      #profile-container #main-screen #option-component_MAPMAKER #mapmaker-initial-components .ic-text {
+        position: absolute;
+        color: white;
+        font-size: 90px;
+        pointer-events: none;
+        transition: all 0.7s; }
+        #profile-container #main-screen #option-component_MAPMAKER #mapmaker-initial-components .ic-text#ic-text_LOAD {
+          left: 25%;
+          top: 35%; }
+        #profile-container #main-screen #option-component_MAPMAKER #mapmaker-initial-components .ic-text#ic-text_NEW {
+          right: 25%;
+          top: 65%; }
+    #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column; }
+      #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-header {
+        width: 100%;
+        height: 30px;
+        display: flex;
+        flex-direction: row;
+        border-bottom: 2px solid black; }
+      #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body {
+        width: 100%;
+        flex: 1;
+        display: flex;
+        flex-direction: row; }
+        #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-left-pane {
+          background-color: #998866;
+          width: 400px;
+          height: 100%; }
+        #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane {
+          display: inherit;
+          flex-direction: column;
+          background-color: #889966;
+          width: 200px;
+          height: 100%;
+          /* layer items container */ }
+          #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane #mm-middle-pane-layers {
+            display: inherit;
+            flex-direction: column;
+            justify-content: flex-end;
+            background: #ccc;
+            border: 2px solid black;
+            margin: 10px;
+            flex: 2;
+            /* each layer item */ }
+            #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane #mm-middle-pane-layers .mm-middle-pane-layer {
+              display: inherit;
+              align-items: center;
+              justify-content: space-between; }
+              #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane #mm-middle-pane-layers .mm-middle-pane-layer div {
+                display: inherit;
+                align-items: center; }
+                #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane #mm-middle-pane-layers .mm-middle-pane-layer div .layer-preview {
+                  background: #a0a0a0; }
+                #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane #mm-middle-pane-layers .mm-middle-pane-layer div .layer-opacity-slider {
+                  width: 50px !important;
+                  height: 15px !important; }
+                #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane #mm-middle-pane-layers .mm-middle-pane-layer div .layer-opacity-slider::-webkit-slider-thumb {
+                  width: 15px !important; }
+                #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane #mm-middle-pane-layers .mm-middle-pane-layer div .layer-opacity-slider::-moz-range-thumb {
+                  width: 15px !important; }
+          #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane #mm-middle-pane-animation {
+            background: #ccc;
+            border: 2px solid black;
+            margin: 10px;
+            flex: 1; }
+        #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-right-pane {
+          background: #669966;
+          flex: 1;
+          height: 100%; }
+
+.flex-row {
+  display: flex;
+  flex-direction: row; }
+
+.flex-space-between {
+  justify-content: space-between; }
+
+.page-title {
+  font-size: 40px;
+  margin: 0;
+  display: inline; }
+
+#variables {
+  display: none; }
+
+#root {
+  height: 100%; }
+
+#error-message {
+  margin: 0;
+  padding: 0; }

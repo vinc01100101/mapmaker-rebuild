@@ -18,12 +18,7 @@ const userOptions = {
 	posts: [44, "[ ]", "#a1b9fc", <Posts />],
 	myGallery: [79, "[ ]", "#a3edff", <MyGallery />],
 	myTilesets: [85, "[ ]", "#a3ffba", <MyTilesets />],
-	mapMaker: [
-		82,
-		"( )",
-		"#e8ffa3",
-		<MapMaker _reduxActionCallback={this._reduxActionCallback} />,
-	],
+	mapMaker: [82, "( )", "#e8ffa3", <MapMaker />],
 	editProfile: [83, "{ }", "#ffa8a3", <EditProfile />],
 	settings: [63, "{ }", "#ffa3ff", <Settings />],
 };
@@ -97,7 +92,7 @@ class Profile extends React.Component {
 	render() {
 		return (
 			<div className="flex-row" id="profile-container">
-				<div id="user-sideboard" className="no-user-select">
+				<div id="user-sideboard">
 					<div className="flex-row">
 						<img
 							src="/assets/profile_pictures/default.jpg"

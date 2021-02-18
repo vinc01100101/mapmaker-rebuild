@@ -4,7 +4,9 @@
 	"description": "title says it all",
 	"main": "server.js",
 	"scripts": {
-		"start": "babel-watch ./server.js",
+		"babel:watch": "babel-watch ./server.js",
+		"node:sass": "node-sass -w src_client/scss/ -o dist/css/",
+		"start": "parallelshell \"npm run node:sass\" \"npm run babel:watch\"",
 		"build": "webpack --mode production"
 	},
 	"keywords": [],

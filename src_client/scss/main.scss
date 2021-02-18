@@ -1,0 +1,26 @@
+@import "global-elements";
+@import "Profile";
+
+.flex-row {
+	display: flex;
+	flex-direction: row;
+}
+.flex-space-between {
+	justify-content: space-between;
+}
+.page-title {
+	font-size: 40px;
+	margin: 0;
+	display: inline;
+}
+
+#variables {
+	display: none;
+}
+#root {
+	height: 100%;
+}
+#error-message {
+	margin: 0;
+	padding: 0;
+}
