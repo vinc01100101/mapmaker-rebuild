@@ -165,10 +165,13 @@ input[type="range"] {
             margin: 10px;
             flex: 2;
             /* each layer item */ }
+            #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane #mm-middle-pane-layers #button-add-layer {
+              height: 32px; }
             #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane #mm-middle-pane-layers .mm-middle-pane-layer {
               display: inherit;
               align-items: center;
-              justify-content: space-between; }
+              justify-content: space-between;
+              height: 32px; }
               #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane #mm-middle-pane-layers .mm-middle-pane-layer div {
                 display: inherit;
                 align-items: center; }
@@ -177,10 +180,10 @@ input[type="range"] {
                 #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane #mm-middle-pane-layers .mm-middle-pane-layer div .layer-opacity-slider {
                   width: 50px !important;
                   height: 15px !important; }
-                #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane #mm-middle-pane-layers .mm-middle-pane-layer div .layer-opacity-slider::-webkit-slider-thumb {
-                  width: 15px !important; }
-                #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane #mm-middle-pane-layers .mm-middle-pane-layer div .layer-opacity-slider::-moz-range-thumb {
-                  width: 15px !important; }
+                  #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane #mm-middle-pane-layers .mm-middle-pane-layer div .layer-opacity-slider::-webkit-slider-thumb {
+                    width: 15px !important; }
+                  #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane #mm-middle-pane-layers .mm-middle-pane-layer div .layer-opacity-slider::-moz-range-thumb {
+                    width: 15px !important; }
           #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane #mm-middle-pane-animation {
             background: #ccc;
             border: 2px solid black;

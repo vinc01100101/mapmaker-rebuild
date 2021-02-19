@@ -22,15 +22,22 @@ module.exports = (app, UserModel) => {
 	});
 	//profile page needs to check if user is authenticated
 	app.get("/profile", checkIfAuthenticated, (req, res) => {
+		const user = req.user;
+		console.log(JSON.stringify(req.user));
 		renderPug(res, {
 			page: "profile",
 			user: JSON.stringify({
-				username: req.user.username,
-				name: req.user.name,
-				profilePicture: req.user.profilePicture,
+				username: user.username,
+				name: user.name,
+				profilePicture: user.profilePicture,
+				tilesets: user.tilesets,
 			}),
 		});
 	});
+
+	// app.get("/assets/*", checkIfAuthenticated, (req, res) => {
+	// 	res.send("auth");
+	// });
 
 	app.get("/logout", (req, res) => {
 		req.logout();
@@ -59,8 +66,12 @@ module.exports = (app, UserModel) => {
 			} else {
 				const hash = bcrypt.hashSync(req.body.password, 12);
 				const newDoc = new UserModel({
+					name: req.body.name,
 					username,
 					password: hash,
+					profilePicture: "/assets/profile_pictures/default.jpg",
+					tilesets: [], //url to server files
+					maps: [],
 				});
 				newDoc.save((err, usr) => {
 					if (err) {
@@ -81,7 +92,7 @@ module.exports = (app, UserModel) => {
 						renderPug(res, {
 							page: "register",
 							errorDom: JSON.stringify({
-								message: "username already exists",
+								message: "an error occured, please try again..",
 								prevValues: { username },
 							}),
 						});

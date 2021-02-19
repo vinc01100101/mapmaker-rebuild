@@ -12,6 +12,7 @@ const Settings = require("./components/Settings");
 
 //helpers
 const Context = require("./helpers/context-profile");
+const pugVariables = require("./helpers/pug-variables");
 
 //reference for each width of active option
 const userOptions = {
@@ -88,6 +89,20 @@ class Profile extends React.Component {
 	}
 	componentDidMount() {
 		this.emits = require("./helpers/client-emits")(this._reduxActionCallback);
+		if (window.Worker) {
+			console.log("Worker API is supported! :)");
+			this.worker = new Worker("./webWorker.js");
+
+			this.worker.onmessage = (e) => {
+				switch (e.data.type) {
+					case "to bitmap success":
+						console.log("Success storing file: " + e.data.name);
+						break;
+				}
+			};
+		} else {
+			console.log("Worker API is not supported.. :(");
+		}
 	}
 	render() {
 		return (
@@ -100,9 +115,11 @@ class Profile extends React.Component {
 						/>
 						<div>
 							<div>
-								<strong>User Name</strong>
+								<span style={{ fontWeight: "bold" }}>
+									{pugVariables.userData.name}
+								</span>
 							</div>
-							<div>@username</div>
+							<div>@{pugVariables.userData.username}</div>
 							<a href="#">inbox</a>
 						</div>
 					</div>

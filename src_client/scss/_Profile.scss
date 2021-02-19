@@ -151,10 +151,16 @@
 							flex: 2;
 
 							/* each layer item */
+
+							#button-add-layer {
+								height: 32px;
+							}
+
 							.mm-middle-pane-layer {
 								display: inherit;
 								align-items: center;
 								justify-content: space-between;
+								height: 32px;
 
 								div {
 									display: inherit;

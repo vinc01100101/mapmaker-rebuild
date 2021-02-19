@@ -6,6 +6,7 @@ class Register extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			name: "",
 			username: "",
 			password: "",
 			confirmPassword: "",
@@ -45,9 +46,19 @@ class Register extends React.Component {
 					<input
 						required
 						type="text"
+						id="name"
+						name="name"
+						placeholder="Display Name"
+						onChange={this._handleOnChange}
+						value={this.state.name}
+					/>
+					<br />
+					<input
+						required
+						type="text"
 						id="username"
 						name="username"
-						placeholder="Username"
+						placeholder="Username(no spaces)"
 						onChange={this._handleOnChange}
 						value={this.state.username}
 					/>

@@ -48,6 +48,19 @@ if (devRecompileEnabled) {
   );
 }
 
+//custom middleware to prevent users from accessing
+//the tilesets they do not own
+app.use("/assets/tilesets/:tileset", (req, res, next) => {
+  const requestedTileset = req.params.tileset;
+  if (
+    requestedTileset != "default1.png" &&
+    requestedTileset != "default2.png" &&
+    req.user.tilesets.indexOf(requestedTileset) == -1
+  ) {
+    return res.send("Not allowed.");
+  }
+  next();
+});
 app.use(express.static(__dirname + "/dist", { index: false }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -62,10 +75,15 @@ mongoose.connect(
     if (err) {
       return console.log("Error while connecting to database: " + err.message);
     } else {
+      console.log("Connected to DATABASE");
       //SCHEMA
       const user = new mongoose.Schema({
+        name: String,
         username: { type: String, required: true, unique: true },
         password: { type: String, required: true },
+        profilePicture: String,
+        tilesets: Array,
+        maps: Array,
       });
       user.plugin(uniqueValidator);
       //MODEL
@@ -74,10 +92,10 @@ mongoose.connect(
       auth(app, client, UserModel, io);
       routes(app, UserModel);
       emits(io);
+
+      http.listen(port, () => {
+        console.log("Server started on port: " + port + "!!");
+      });
     }
   }
 );
-
-http.listen(port, () => {
-  console.log("Server started on port: " + port + "!!");
-});

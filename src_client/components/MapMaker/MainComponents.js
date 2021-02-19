@@ -1,4 +1,15 @@
 const React = require("react");
+const Context = require("../../helpers/context-profile");
+
+let map = {
+	name: "",
+	previewUrl: "",
+	tilesetsUsed: [],
+	cellSizePixel: 0,
+	cellCountX: 0,
+	cellCountY: 0,
+	render: [], //[{layerName:"name",draw:{7_4:[tileset,sx,sy]}}]
+};
 
 class MainComponents extends React.Component {
 	constructor(props) {
@@ -60,6 +71,7 @@ class MiddlePane extends React.Component {
 		return (
 			<div id="mm-middle-pane">
 				<div id="mm-middle-pane-layers">
+					<button id="button-add-layer">+</button>
 					<div className="mm-middle-pane-layer">
 						Layer 1
 						<div>
