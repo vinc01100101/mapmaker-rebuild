@@ -1,9 +1,20 @@
 const imageBitmaps = {};
-
-self.onmessage = (e) => {
+console.log("Called webworker");
+onmessage = (e) => {
 	switch (e.data.type) {
+		case "getArrayImgBitmap":
+			const ret = {};
+			e.data.names.map((x) => {
+				ret[x] = imageBitmaps[x];
+			});
+			postMessage({
+				type: "returned a bitmap",
+				bitmaps: ret,
+				cbid: e.data.cbid,
+			});
+			break;
 		case "toBitMap":
-			async function toBitMap() {
+			async function toBitmap() {
 				const blobData = await fetch(e.data.path)
 					.then((d) => d.blob())
 					.catch((e) => {
@@ -11,15 +22,13 @@ self.onmessage = (e) => {
 					});
 				await createImageBitmap(blobData).then((d) => {
 					imageBitmaps[e.data.name] = d;
-					self.postMessage({
+					postMessage({
 						type: "to bitmap success",
 						name: e.data.name,
 					});
 				});
-
-				blobData();
 			}
-
+			toBitmap();
 			break;
 	}
 };

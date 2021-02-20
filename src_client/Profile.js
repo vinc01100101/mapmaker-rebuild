@@ -13,6 +13,8 @@ const Settings = require("./components/Settings");
 //helpers
 const Context = require("./helpers/context-profile");
 const pugVariables = require("./helpers/pug-variables");
+const AssetsDownloader = require("./helpers/assets-downloader");
+const worker = require("./helpers/webworker-events");
 
 //reference for each width of active option
 const userOptions = {
@@ -89,20 +91,20 @@ class Profile extends React.Component {
 	}
 	componentDidMount() {
 		this.emits = require("./helpers/client-emits")(this._reduxActionCallback);
-		if (window.Worker) {
-			console.log("Worker API is supported! :)");
-			this.worker = new Worker("./webWorker.js");
 
-			this.worker.onmessage = (e) => {
-				switch (e.data.type) {
-					case "to bitmap success":
-						console.log("Success storing file: " + e.data.name);
-						break;
-				}
-			};
-		} else {
-			console.log("Worker API is not supported.. :(");
-		}
+		this.assetsDownloader = new AssetsDownloader();
+
+		const defaultTilesets = [
+			{ name: "Default 1", id: "default1" },
+			{ name: "Default 2", id: "default2" },
+		];
+		let toBeDownloaded = [
+			...pugVariables.userData.tilesets,
+			...defaultTilesets,
+		].map((x) => {
+			return { name: x.name, path: "/assets/tilesets/" + x.id + ".png" };
+		});
+		this.assetsDownloader.download(toBeDownloaded);
 	}
 	render() {
 		return (

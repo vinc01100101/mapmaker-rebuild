@@ -35,15 +35,17 @@ module.exports = (app, UserModel) => {
 		});
 	});
 
-	// app.get("/assets/*", checkIfAuthenticated, (req, res) => {
-	// 	res.send("auth");
-	// });
-
 	app.get("/logout", (req, res) => {
 		req.logout();
 		res.redirect("/");
 	});
 
+	//handle error pages
+	app.get("/error/:msg", (req, res) => {
+		const params = req.params.msg;
+		const message = params.replace(/-/g, " ");
+		res.send(message);
+	});
 	app.post(
 		"/login",
 		checkIfNotAuthenticated,
