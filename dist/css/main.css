@@ -27,7 +27,7 @@ header {
 input[type="range"] {
   -webkit-appearance: none;
   width: 100px;
-  height: 25px;
+  height: 100%;
   background: #282828;
   outline: none;
   opacity: 0.7;
@@ -47,6 +47,15 @@ input[type="range"] {
     height: 25px;
     background: #3563bc;
     cursor: pointer; }
+
+canvas {
+  pointer-events: none;
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: pixelated;
+  image-rendering: -o-crisp-edges;
+  image-rendering: optimize-contrast; }
 
 #profile-container {
   height: 100%; }
@@ -136,19 +145,23 @@ input[type="range"] {
       flex-direction: column; }
       #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-header {
         width: 100%;
-        height: 30px;
+        height: 4%;
         display: flex;
         flex-direction: row;
         border-bottom: 2px solid black; }
       #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body {
         width: 100%;
-        flex: 1;
+        height: 96%;
         display: flex;
         flex-direction: row; }
         #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-left-pane {
           background-color: #998866;
           width: 400px;
-          height: 100%; }
+          height: 100%;
+          overflow: hidden; }
+          #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-left-pane #tileset-canvas-container {
+            width: 100%;
+            height: 100%; }
         #profile-container #main-screen #option-component_MAPMAKER #mapmaker-main-components #mm-body #mm-middle-pane {
           display: inherit;
           flex-direction: column;

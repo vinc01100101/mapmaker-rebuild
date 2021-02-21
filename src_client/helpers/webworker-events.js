@@ -17,10 +17,12 @@ if (window.Worker) {
 			case "to bitmap success":
 				console.log("Success storing file: " + e.data.name);
 				break;
-			case "returned a bitmap":
-				callbackId[e.data.cbid](e.data.bitmaps);
-				delete callbackId[e.data.cbid];
-				break;
+		}
+		//if the data has callback from main thread,
+		//call it then delete it
+		if (e.data.cbid) {
+			callbackId[e.data.cbid](e.data.value);
+			delete callbackId[e.data.cbid];
 		}
 	};
 } else {
@@ -29,13 +31,16 @@ if (window.Worker) {
 }
 
 function postMessage(data, callback) {
+	//if callback function is passed
+	//generate id using time miliseconds
+	//and use it as property that holds callback as value
 	if (callback) {
 		const date = new Date();
 		const id = date.getTime();
 		callbackId[id] = callback;
-		data.cbid = id;
+		data[0].cbid = id;
 	}
-	worker.postMessage(data);
+	worker.postMessage(...data);
 }
 
 module.exports = postMessage;

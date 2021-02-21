@@ -102,13 +102,21 @@ class Profile extends React.Component {
 			...pugVariables.userData.tilesets,
 			...defaultTilesets,
 		].map((x) => {
-			return { name: x.name, path: "/assets/tilesets/" + x.id + ".png" };
+			return {
+				name: x.name,
+				group: "tilesets",
+				path: "/assets/tilesets/" + x.id + ".png",
+			};
 		});
 		this.assetsDownloader.download(toBeDownloaded);
 	}
 	render() {
 		return (
-			<div className="flex-row" id="profile-container">
+			<div
+				className="flex-row"
+				id="profile-container"
+				onContextMenu={(e) => e.preventDefault()}
+			>
 				<div id="user-sideboard">
 					<div className="flex-row">
 						<img

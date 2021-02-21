@@ -32,7 +32,7 @@ header {
 input[type="range"] {
 	-webkit-appearance: none;
 	width: 100px;
-	height: 25px;
+	height: 100%;
 	background: rgb(40, 40, 40);
 	outline: none;
 	opacity: 0.7;
@@ -58,4 +58,16 @@ input[type="range"] {
 		background: #3563bc;
 		cursor: pointer;
 	}
+}
+
+// for sharp pixels upon zoom
+canvas {
+	pointer-events: none;
+
+	image-rendering: optimizeSpeed;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: pixelated;
+	image-rendering: -o-crisp-edges;
+	image-rendering: optimize-contrast;
 }

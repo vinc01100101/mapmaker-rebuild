@@ -7,6 +7,8 @@ head
 	meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
 	meta(name='description', content='A simple chat application.')
 	link(rel='shortcut icon', href='./favicon.ico', type='image/x-icon')
+	script(src='./socket.io/socket.io.js' defer)
+	script(type='text/javascript' src='./js/dynamicImport.js' defer)
 
 #root
 #variables
@@ -19,6 +21,4 @@ head
 //- 	var s = document.createElement('script')
 //- 			s.src = `./js/${page}.js`
 //- 			document.body.appendChild(s)
-script(src='./socket.io/socket.io.js')
-script(type='text/javascript' src='./js/dynamicImport.js')
 

@@ -114,14 +114,14 @@
 				flex-direction: column;
 				#mm-header {
 					width: 100%;
-					height: 30px;
+					height: 4%;
 					display: flex;
 					flex-direction: row;
 					border-bottom: 2px solid black;
 				}
 				#mm-body {
 					width: 100%;
-					flex: 1;
+					height: 96%;
 					display: flex;
 					flex-direction: row;
 
@@ -130,6 +130,13 @@
 						background-color: hsl(40, 20%, 50%);
 						width: 400px;
 						height: 100%;
+						overflow: hidden;
+
+						#tileset-canvas-container {
+							width: 100%;
+							height: 100%;
+							// transition: transform 0.2s;
+						}
 					}
 
 					// MIDDLE PANE---------------------

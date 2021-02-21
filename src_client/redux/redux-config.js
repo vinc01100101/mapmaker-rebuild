@@ -8,10 +8,7 @@ module.exports = (Component) => {
 	const ADD_MESSAGE = "ADD_MESSAGE";
 	const CHANGE_MAIN_SCREEN = "CHANGE_MAIN_SCREEN";
 	const MAPMAKER_LOAD_AND_NEW = "MAPMAKER_LOAD_AND_NEW";
-	const MANAGE_LAYERS_LOAD = "MANAGE_LAYERS_LOAD";
-	const MANAGE_LAYERS_ADD = "MANAGE_LAYERS_ADD";
-	const MANAGE_LAYERS_MOVE = "MANAGE_LAYERS_MOVE";
-	const MANAGE_LAYERS_DELETE = "MANAGE_LAYERS_DELETE";
+	const CURRENT_TILESET = "CURRENT_TILESET";
 
 	//actions
 	const actAddMessage = (msgData) => {
@@ -26,28 +23,10 @@ module.exports = (Component) => {
 			loadOrNew,
 		};
 	};
-	const actManageLayers_load = (layers) => {
+	const actCurrentTileset = (currentTilesetData) => {
 		return {
-			type: MANAGE_LAYERS_LOAD,
-			layers,
-		};
-	};
-	const actManageLayers_add = (layerName) => {
-		return {
-			type: MANAGE_LAYERS_ADD,
-			layerName,
-		};
-	};
-	const actManageLayers_move = (layerName) => {
-		return {
-			type: MANAGE_LAYERS_MOVE,
-			layerName,
-		};
-	};
-	const actManageLayers_delete = (layerName) => {
-		return {
-			type: MANAGE_LAYERS_DELETE,
-			layerName,
+			type: CURRENT_TILESET,
+			currentTilesetData,
 		};
 	};
 	//reducers_____
@@ -68,11 +47,11 @@ module.exports = (Component) => {
 				return state;
 		}
 	};
-	//for ui states
+	//for ui states that is shared to different components
 	const defaultUiState = {
 		currMainScreen: "posts",
 		loadOrNew: "",
-		layers: [],
+		currentTilesetData: {},
 	};
 	const uiReducer = (state = defaultUiState, action) => {
 		let clone;
@@ -90,10 +69,10 @@ module.exports = (Component) => {
 				});
 				return clone;
 				break;
-			case MANAGE_LAYERS_LOAD:
-				clone = Object.assign({}, state, { layers: action.layers });
-				return clone;
+			case CURRENT_TILESET:
+				return action.currentTilesetData;
 				break;
+
 			default:
 				return state;
 		}

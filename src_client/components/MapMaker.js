@@ -12,7 +12,7 @@ module.exports = class extends React.Component {
 	render() {
 		return (
 			<div className="option-component" id="option-component_MAPMAKER">
-				<InitialComponents />
+				<MainComponents />
 			</div>
 		);
 	}
